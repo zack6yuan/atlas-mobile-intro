@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, Button } from 'react-native';
 
 import { Collapsible } from '@/components/ui/collapsible';
 import { ExternalLink } from '@/components/external-link';
@@ -27,7 +27,7 @@ export default function TabTwoScreen() {
           style={{
             fontFamily: Fonts.rounded,
           }}>
-          Explore
+          Add Activities
         </ThemedText>
       </ThemedView>
       <ThemedText>This app includes example code to help you get started.</ThemedText>
@@ -94,6 +94,11 @@ export default function TabTwoScreen() {
           ),
         })}
       </Collapsible>
+      <ThemedView style={styles.stepContainer}>
+        <Button
+          title="Go back"
+        />
+      </ThemedView>
     </ParallaxScrollView>
   );
 }
@@ -104,6 +109,10 @@ const styles = StyleSheet.create({
     bottom: -90,
     left: -35,
     position: 'absolute',
+  },
+  stepContainer: {
+    gap: 8,
+    marginBottom: 8,
   },
   titleContainer: {
     flexDirection: 'row',
