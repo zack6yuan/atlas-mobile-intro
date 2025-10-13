@@ -9,22 +9,11 @@ export default function AddActivitiyScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.list}>
-      {/* {activities.map((activity) => (
+      {activities.map((activity) => (
         <Text key={activity.id}>
           {activity.steps} steps on {new Date(activity.date).toLocaleString()}
         </Text>
-      ))} */}
-      <FlashList
-        renderItem={({ item }) => <Activity activity={item} />}
-        data={ activities }
-        estimatedItemSize={ 50 }
-        onRefresh={() => {
-          Alert.alert("Refresh")
-        }}
-        onEndReached={() => {
-          Alert.alert("End reached")
-        }}
-      />
+      ))}
       </View>
       <Link style={styles.button} href={"/add-activity-screen"} replace>
         <Text style={styles.buttonText}>Add Activity</Text>

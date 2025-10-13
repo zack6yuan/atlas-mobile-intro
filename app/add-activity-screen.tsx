@@ -9,7 +9,7 @@ export default function AddActivityScreen() {
   const router = useRouter();
   return (
     <View style={styles.container}>
-      <Text>Add Activity Screen</Text>
+      <Text style={styles.header}>Add Activity Screen</Text>
       <TextInput
         placeholder="Enter steps"
         keyboardType="number-pad"
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: "100%",
     alignItems: "center",
+    backgroundColor: "#FEF9E6",
   },
   addButton: {
     backgroundColor: "#1ED2AF",
@@ -41,7 +42,6 @@ const styles = StyleSheet.create({
     padding: 16,
     width: "100%",
     textAlign: "center",
-    marginBottom: 16,
   },
   button: {
     backgroundColor: "#D00414",
