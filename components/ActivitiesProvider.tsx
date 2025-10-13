@@ -10,9 +10,9 @@ const ActivitiesContext = createContext<ReturnType<typeof useActivities>>({
 export const useActivitiesContext = () => useContext(ActivitiesContext);
 
 export function ActivitiesProvider({ children }: { children: React.ReactNode}) {
-  const { activities } = useActivities();
+  const activitiesValue = useActivities();
   return (
-    <ActivitiesContext.Provider value={{ activities }}>
+    <ActivitiesContext.Provider value={activitiesValue}>
       { children }
     </ActivitiesContext.Provider>
   );

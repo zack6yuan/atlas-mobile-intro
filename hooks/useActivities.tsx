@@ -1,5 +1,5 @@
 import { useSQLiteContext } from "expo-sqlite";
-import { act, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 type Activity = {
   id: number;

@@ -1,55 +1,61 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet, Button, Text } from 'react-native';
-import { useActivities } from "@/hooks/useActivities"
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
-import { useActivitiesContext } from '@/components/ActivitiesProvider';
+import { Platform, StyleSheet, Button, Text, View, Alert } from "react-native";
+import { Link } from "expo-router";
+import { useActivitiesContext } from "@/components/ActivitiesProvider";
+import { FlashList } from "@shopify/flash-list"
+import React from "react";
 
-export default function HomeScreen() {
+export default function AddActivitiyScreen() {
   const { activities } = useActivitiesContext();
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.stepContainer}>
-        {activities.map((activity) => (
-          <Text key={activity.id}>
-            {activity.steps} steps on{" "}
-            {new Date(activity.date).toLocaleString()}
-          </Text>
-        ))}
-        <Link style={styles.button} href={"/add-activity-screen"} replace>
-          <Text style={styles.buttonText}>Add Activity</Text>
-        </Link>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      <View style={styles.list}>
+      {/* {activities.map((activity) => (
+        <Text key={activity.id}>
+          {activity.steps} steps on {new Date(activity.date).toLocaleString()}
+        </Text>
+      ))} */}
+      <FlashList
+        renderItem={({ item }) => <Activity activity={item} />}
+        data={ activities }
+        estimatedItemSize={ 50 }
+        onRefresh={() => {
+          Alert.alert("Refresh")
+        }}
+        onEndReached={() => {
+          Alert.alert("End reached")
+        }}
+      />
+      </View>
+      <Link style={styles.button} href={"/add-activity-screen"} replace>
+        <Text style={styles.buttonText}>Add Activity</Text>
+      </Link>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 8,
   },
   stepContainer: {
     gap: 8,
     marginBottom: 8,
+    justifyContent: "center",
   },
   reactLogo: {
     height: 178,
     width: 290,
     bottom: 0,
     left: 0,
-    position: 'absolute',
+    position: "absolute",
   },
   button: {
     backgroundColor: "#1ED2AF",
@@ -57,9 +63,10 @@ const styles = StyleSheet.create({
     padding: 16,
     width: "100%",
     textAlign: "center",
+    marginTop: 10,
   },
   buttonText: {
-    color: "white"
+    color: "white",
   },
   heading: {
     fontSize: 24,
