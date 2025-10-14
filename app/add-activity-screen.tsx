@@ -9,10 +9,11 @@ export default function AddActivityScreen() {
   const router = useRouter();
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Add Activity Screen</Text>
+      <Text style={styles.header}>Add Activity</Text>
       <TextInput
         placeholder="Enter steps"
         keyboardType="number-pad"
+        style={styles.stepsInput}
         onChangeText={(value) => setSteps(parseInt(value))}>
       </TextInput>
       <Pressable style={styles.addButton} onPress={() => {
@@ -53,5 +54,22 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     textAlign: "center",
-  }
+  },
+  stepsInput: {
+    backgroundColor: 'white',
+    width: '100%',
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderColor: 'black',
+    borderWidth: 3,
+    marginBottom: 20,
+    textAlign: 'left',
+    paddingLeft: 10,
+    fontSize: 19,
+  },
+  header: {
+    fontSize: 30,
+    marginBottom: 10,
+    fontWeight: 'bold',
+  },
 });

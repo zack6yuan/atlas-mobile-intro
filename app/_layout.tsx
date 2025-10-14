@@ -34,6 +34,12 @@ export default function RootLayout() {
                 headerShown: false,
               }}
             />
+            <Stack.Screen
+              name="add-activity-screen"
+              options={{
+                headerShown:false,
+              }}
+            />
           </Stack>
           <StatusBar style="auto" />
         </ThemeProvider>
