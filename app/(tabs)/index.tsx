@@ -3,7 +3,6 @@ import { Link } from "expo-router";
 import { useActivitiesContext } from "@/components/ActivitiesProvider";
 import { FlashList } from "@shopify/flash-list";
 import React from "react";
-import { Activity as ActivityType } from "@/components/Activity";
 
 export default function AddActivitiyScreen() {
   const { activities } = useActivitiesContext();
