@@ -1,26 +1,43 @@
-import { Platform, StyleSheet, Button, Text, View, Alert } from "react-native";
+import {
+  Platform,
+  StyleSheet,
+  Button,
+  Text,
+  View,
+  Alert,
+  Pressable,
+} from "react-native";
 import { Link } from "expo-router";
 import { useActivitiesContext } from "@/components/ActivitiesProvider";
 import { FlashList } from "@shopify/flash-list";
-import React from "react";
+import React, { useState } from "react";
 
 export default function AddActivitiyScreen() {
   const { activities } = useActivitiesContext();
+  const { deleteAllActivities } = useActivitiesContext();
+
+  const [steps, setSteps] = useState<number>(0);
   return (
     <View style={styles.container}>
       <View style={styles.list}>
         {activities.map((activity) => (
-          <Text key={activity.id} style={styles.activityText}>
-            {activity.steps} steps on {new Date(activity.date).toLocaleString()}
-          </Text>
+          <View key={activity.id}>
+            <Text style={styles.activityText}>
+              {new Date(activity.date).toLocaleString()}
+            </Text>
+            <Text style={styles.stepCount}>
+              Steps: {activity.steps}
+            </Text>
+          </View>
         ))}
       </View>
       <Link style={styles.button} href={"/add-activity-screen"} replace>
         <Text style={styles.buttonText}>Add Activity</Text>
       </Link>
-      <Link style={styles.deleteButton} href={"/"}>
-        <Text style={styles.buttonText}>Delete all activities</Text>
-      </Link>
+      <Pressable style={styles.deleteButton} onPress={() => { 
+        deleteAllActivities(steps, new Date());}}>
+        <Text style={styles.deleteButtonText}>Delete all activities</Text>
+      </Pressable>
     </View>
   );
 }
@@ -61,8 +78,9 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
   },
-  heading: {
-    fontSize: 24,
+  deleteButtonText: {
+    textAlign: "center",
+    color: "white",
   },
   deleteButton: {
     backgroundColor: "#D00214",
@@ -72,7 +90,7 @@ const styles = StyleSheet.create({
   },
   list: {
     backgroundColor: "white",
-    width: "100%",
+    width: "94%",
     paddingTop: 10,
     paddingBottom: 10,
     marginBottom: 10,
@@ -80,7 +98,10 @@ const styles = StyleSheet.create({
     borderWidth: 4,
   },
   activityText: {
-    marginTop: 20,
-    marginBottom: 20,
+    paddingLeft: 15,
   },
+  stepCount: {
+    fontSize: 35,
+    paddingLeft: 15,
+  }
 });

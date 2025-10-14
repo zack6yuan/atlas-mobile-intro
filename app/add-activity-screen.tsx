@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
   stepsInput: {
     backgroundColor: 'white',
     width: '100%',
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: 12,
+    paddingBottom: 12,
     borderColor: 'black',
     borderWidth: 3,
     marginBottom: 20,
