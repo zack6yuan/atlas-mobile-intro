@@ -8,7 +8,7 @@ export default function AddActivityScreen() {
   const { insertActivity } = useActivitiesContext();
   const router = useRouter();
   return (
-    <View style={styles.container}>
+    <View style={styles.container} screenOptions={{headerShown: false}}>
       <Text style={styles.header}>Add Activity</Text>
       <TextInput
         placeholder="Enter steps"

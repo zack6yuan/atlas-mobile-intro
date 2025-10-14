@@ -10,13 +10,16 @@ export default function AddActivitiyScreen() {
     <View style={styles.container}>
       <View style={styles.list}>
       {activities.map((activity) => (
-        <Text key={activity.id}>
+        <Text key={activity.id} style={styles.activityText}>
           {activity.steps} steps on {new Date(activity.date).toLocaleString()}
         </Text>
       ))}
       </View>
       <Link style={styles.button} href={"/add-activity-screen"} replace>
         <Text style={styles.buttonText}>Add Activity</Text>
+      </Link>
+      <Link style={styles.deleteButton} href={"/"}>
+        <Text style={styles.buttonText}>Delete all activities</Text>
       </Link>
     </View>
   );
@@ -28,6 +31,7 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#FEF9E6",
   },
   titleContainer: {
     flexDirection: "row",
@@ -60,4 +64,23 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 24,
   },
+  deleteButton: {
+    backgroundColor: '#D00214',
+    width: '100%',
+    textAlign: 'center',
+    padding: 16,
+  },
+  list: {
+    backgroundColor: 'white',
+    width: '100%',
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginBottom: 10,
+    borderColor: 'black',
+    borderWidth: 4,
+  },
+  activityText: {
+    marginTop: 20,
+    marginBottom: 20,
+  }
 });
