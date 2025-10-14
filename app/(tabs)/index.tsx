@@ -1,19 +1,20 @@
 import { Platform, StyleSheet, Button, Text, View, Alert } from "react-native";
 import { Link } from "expo-router";
 import { useActivitiesContext } from "@/components/ActivitiesProvider";
-import { FlashList } from "@shopify/flash-list"
+import { FlashList } from "@shopify/flash-list";
 import React from "react";
+import { Activity as ActivityType } from "@/components/Activity";
 
 export default function AddActivitiyScreen() {
   const { activities } = useActivitiesContext();
   return (
     <View style={styles.container}>
       <View style={styles.list}>
-      {activities.map((activity) => (
-        <Text key={activity.id} style={styles.activityText}>
-          {activity.steps} steps on {new Date(activity.date).toLocaleString()}
-        </Text>
-      ))}
+        {activities.map((activity) => (
+          <Text key={activity.id} style={styles.activityText}>
+            {activity.steps} steps on {new Date(activity.date).toLocaleString()}
+          </Text>
+        ))}
       </View>
       <Link style={styles.button} href={"/add-activity-screen"} replace>
         <Text style={styles.buttonText}>Add Activity</Text>
@@ -65,22 +66,22 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   deleteButton: {
-    backgroundColor: '#D00214',
-    width: '100%',
-    textAlign: 'center',
+    backgroundColor: "#D00214",
+    width: "100%",
+    textAlign: "center",
     padding: 16,
   },
   list: {
-    backgroundColor: 'white',
-    width: '100%',
+    backgroundColor: "white",
+    width: "100%",
     paddingTop: 10,
     paddingBottom: 10,
     marginBottom: 10,
-    borderColor: 'black',
+    borderColor: "black",
     borderWidth: 4,
   },
   activityText: {
     marginTop: 20,
     marginBottom: 20,
-  }
+  },
 });
