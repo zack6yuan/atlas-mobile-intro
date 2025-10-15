@@ -1,12 +1,4 @@
-import {
-  Platform,
-  StyleSheet,
-  Button,
-  Text,
-  View,
-  Alert,
-  Pressable,
-} from "react-native";
+import {StyleSheet, Text, View, Pressable} from "react-native";
 import { Link } from "expo-router";
 import { useActivitiesContext } from "@/components/ActivitiesProvider";
 import { FlashList } from "@shopify/flash-list";
@@ -18,26 +10,24 @@ interface activityProps {
   steps: number;
 }
 
-export default function AddActivitiyScreen() {
+export default function AddActivitiyScreen({id, date, steps}: activityProps) {
   const { activities, deleteAllActivities } = useActivitiesContext();
 
-  const [steps, setSteps] = useState<number>(0);
   return (
     <View style={styles.container}>
-      <View style={styles.list}>
-        {activities.map((activity: activityProps) => (
-          <View key={activity.id}>
-            <Text style={styles.activityText}>
-              {new Date(activity.date).toLocaleString()}
-            </Text>
-            <Text style={styles.stepCount}>
-              Steps: {activity.steps}
-            </Text>
+      <FlashList
+        data={ activities }
+        renderItem={({ item }) => (
+          <View style={styles.listItem}>
+            <Text style={styles.activityText}>{new Date(item.date).toLocaleString()}</Text>
+            <Text style={styles.stepCount}>Steps: {item.steps}</Text>
           </View>
-        ))}
-      </View>
+        )}
+        estimatedItemSize={50}
+        style={styles.flashStyles}
+      />
       <View style={styles.buttonsContainer}>
-        <Link style={styles.addActivityButton} href={"/add-activity-screen"}>
+        <Link style={styles.addActivityButton} href={"/add-activity-screen"} replace>
           <Text style={styles.buttonText}>Add Activity</Text>
         </Link>
         <Pressable style={styles.deleteButton} onPress={() => { 
@@ -104,12 +94,13 @@ const styles = StyleSheet.create({
     width: "94%",
     paddingTop: 10,
     paddingBottom: 10,
-    marginBottom: 10,
+    marginBottom: 40,
     borderColor: "black",
     borderWidth: 4,
   },
   activityText: {
     paddingLeft: 15,
+    fontSize: 16,
   },
   stepCount: {
     fontSize: 35,
@@ -123,5 +114,19 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     width: '100%',
+  },
+  listItem: {
+    backgroundColor: 'white',
+    borderWidth: 4,
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 15,
+  },
+  flashStyles: {
+    width: '100%',
+    marginBottom: 40,
+    marginTop: 60
   }
 });
