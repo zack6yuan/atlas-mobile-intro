@@ -3,6 +3,7 @@ import { Link } from "expo-router";
 import { useActivitiesContext } from "@/components/ActivitiesProvider";
 import { FlashList } from "@shopify/flash-list";
 import React, { useState } from "react";
+import Swipeable from "react-native-gesture-handler/ReanimatedSwipeable";
 
 interface activityProps {
   id: string;
@@ -111,6 +112,7 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingTop: '16',
     paddingBottom: '16',
+    marginTop: -40,
   },
   buttonsContainer: {
     width: '100%',
