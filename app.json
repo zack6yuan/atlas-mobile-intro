@@ -9,8 +9,7 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "atlas-steps-tracker"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
@@ -39,6 +38,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "3367df2b-cf34-4d1a-b923-b2ed2bb48502"
+      }
+    },
+    "owner": "zack6yuan"
   }
 }
