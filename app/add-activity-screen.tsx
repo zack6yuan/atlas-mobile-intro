@@ -2,13 +2,14 @@ import { StyleSheet, Text, View, TextInput, Pressable } from 'react-native';
 import { Link, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { useActivitiesContext } from '@/components/ActivitiesProvider';
+import React from 'react';
 
 export default function AddActivityScreen() {
   const [steps, setSteps] = useState<number>(0);
   const { insertActivity } = useActivitiesContext();
   const router = useRouter();
   return (
-    <View style={styles.container} screenOptions={{headerShown: false}}>
+    <View style={styles.container}>
       <Text style={styles.header}>Add Activity</Text>
       <TextInput
         placeholder="Enter steps"

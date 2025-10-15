@@ -4,6 +4,7 @@ import * as SQLite from "expo-sqlite"
 import { Asset } from 'expo-asset';
 import { useState, useEffect, Suspense } from 'react';
 import { View } from 'react-native';
+import React from 'react';
 
 async function loadDatabase() {
   const name = "activities.db";

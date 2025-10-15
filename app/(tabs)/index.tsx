@@ -12,15 +12,20 @@ import { useActivitiesContext } from "@/components/ActivitiesProvider";
 import { FlashList } from "@shopify/flash-list";
 import React, { useState } from "react";
 
+interface activityProps {
+  id: string;
+  date: Date;
+  steps: number;
+}
+
 export default function AddActivitiyScreen() {
-  const { activities } = useActivitiesContext();
-  const { deleteAllActivities } = useActivitiesContext();
+  const { activities, deleteAllActivities } = useActivitiesContext();
 
   const [steps, setSteps] = useState<number>(0);
   return (
     <View style={styles.container}>
       <View style={styles.list}>
-        {activities.map((activity) => (
+        {activities.map((activity: activityProps) => (
           <View key={activity.id}>
             <Text style={styles.activityText}>
               {new Date(activity.date).toLocaleString()}
@@ -31,13 +36,15 @@ export default function AddActivitiyScreen() {
           </View>
         ))}
       </View>
-      <Link style={styles.button} href={"/add-activity-screen"} replace>
-        <Text style={styles.buttonText}>Ad Activity</Text>
-      </Link>
-      <Pressable style={styles.deleteButton} onPress={() => { 
-        deleteAllActivities(steps, new Date());}}>
-        <Text style={styles.deleteButtonText}>Delete all activities</Text>
-      </Pressable>
+      <View>
+        <Link style={styles.addButton} href={"/add-activity-screen"} replace>
+          <Text style={styles.buttonText}>Add Activity</Text>
+        </Link>
+        <Pressable style={styles.deleteButton} onPress={() => { 
+          deleteAllActivities(steps, new Date());}}>
+          <Text style={styles.deleteButtonText}>Delete all activities</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
@@ -88,6 +95,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
     padding: 16,
   },
+  addButton: {
+    backgroundColor: "#1ED2AF",
+    color: "white",
+    padding: 16,
+    width: "100%",
+    textAlign: "center",
+  },
   list: {
     backgroundColor: "white",
     width: "94%",
@@ -103,5 +117,11 @@ const styles = StyleSheet.create({
   stepCount: {
     fontSize: 35,
     paddingLeft: 15,
+  },
+  addActivityButton: {
+    backgroundColor: "#1ED2AF",
+    textAlign: 'center',
+    paddingTop: 16,
+    paddingBottom: 16,
   }
 });

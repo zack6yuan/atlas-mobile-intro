@@ -10,6 +10,7 @@ import "react-native-reanimated";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { DatabaseProvider } from "@/components/DatabaseProvider";
 import { ActivitiesProvider } from "@/components/ActivitiesProvider";
+import React from "react";
 
 export const unstable_settings = {
   anchor: "(tabs)",
