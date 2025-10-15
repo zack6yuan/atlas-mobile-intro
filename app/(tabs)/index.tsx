@@ -32,7 +32,7 @@ export default function AddActivitiyScreen() {
         ))}
       </View>
       <Link style={styles.button} href={"/add-activity-screen"} replace>
-        <Text style={styles.buttonText}>Add Activity</Text>
+        <Text style={styles.buttonText}>Ad Activity</Text>
       </Link>
       <Pressable style={styles.deleteButton} onPress={() => { 
         deleteAllActivities(steps, new Date());}}>
