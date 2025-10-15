@@ -36,13 +36,13 @@ export default function AddActivitiyScreen() {
           </View>
         ))}
       </View>
-      <View>
-        <Link style={styles.addButton} href={"/add-activity-screen"} replace>
+      <View style={styles.buttonsContainer}>
+        <Link style={styles.addActivityButton} href={"/add-activity-screen"}>
           <Text style={styles.buttonText}>Add Activity</Text>
         </Link>
         <Pressable style={styles.deleteButton} onPress={() => { 
           deleteAllActivities(steps, new Date());}}>
-          <Text style={styles.deleteButtonText}>Delete all activities</Text>
+          <Text style={styles.buttonText}>Delete all activities</Text>
         </Pressable>
       </View>
     </View>
@@ -83,9 +83,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonText: {
-    color: "white",
-  },
-  deleteButtonText: {
     textAlign: "center",
     color: "white",
   },
@@ -119,9 +116,12 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
   },
   addActivityButton: {
-    backgroundColor: "#1ED2AF",
-    textAlign: 'center',
-    paddingTop: 16,
-    paddingBottom: 16,
+    backgroundColor: '#1ED2AF',
+    width: '100%',
+    paddingTop: '16',
+    paddingBottom: '16',
+  },
+  buttonsContainer: {
+    width: '100%',
   }
 });
